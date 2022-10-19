@@ -1,27 +1,40 @@
 <template>
   <div class="panel">
-    <el-button type="primary">我是按钮</el-button>
+    <el-button type="primary">{{ time }}课时</el-button>
+
+    <el-button type="primary" @click="btn">我是按钮</el-button>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "app",
   data() {
-    return {};
+    return {
+      time: 0
+    };
   },
   created() {
     // this.test()
   },
   mounted() {
     //删除所有的显示框,防止重复显示内容
-     let a = this.$(".rightContent")
-    console.log(a,"元素集合");
-
-   
+    setTimeout(() => {
+      this.btn();
+    }, 1500);
   },
-  methods: {}
+
+  methods: {
+    btn() {
+      let lastTime = document.getElementsByClassName("rightContent");
+      console.log(
+        document.getElementsByClassName("rightContent")[0].childNodes
+      );
+      console.log(document.getElementsByClassName("rightContent"));
+      console.log(this.$(".rightContent").children('div').eq(3).children('span').eq(3));
+      this.time = 0
+    }
+  }
 };
 </script>
 
