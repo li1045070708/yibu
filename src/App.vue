@@ -23,6 +23,7 @@ export default {
     setTimeout(() => {
       this.btn();
       
+      
     }, 1500);
     function addXMLRequestCallback(callback) {
       var oldSend, i;
@@ -65,6 +66,7 @@ export default {
               // this.total = Number(res.standardTime)>1?Number(res.standardTime)*4500000:Number(res.standardTime)*90000
               that.total=Number(res.standardTime)*4500000
               console.log(that.total);
+              window.sessionStorage.setItem('total', Number(res.standardTime)*4500000)
               
             }
 
@@ -102,8 +104,11 @@ export default {
     keshi(){
       console.log(this.time.length)
       var length = this.time.length-2;
-      this.total=Number(this.time.substr(0,length))*4500000
+      // this.total=Number(this.time.substr(0,length))*4500000
+      // this.total=Number(this.time.substr(0,length))*4500000
+      this.total=window.sessionStorage.getItem('total');
       console.log(this.total,"total")
+      this.time ="已完成"+window.sessionStorage.getItem('total')/4500000
       window.sessionStorage.setItem('videoTotalDuration', this.total)
       window.sessionStorage.setItem('currentCoursePlayTime', this.total)
     }
